@@ -13,4 +13,4 @@ Projetos Tecnológicos: Exemplos de desenvolvimento de software, aplicações e 
 
 🌟 Explore e Conecte-se Sinta-se à vontade para explorar os projetos, contribuir e me contatar se tiver interesse em discutir ideias, oportunidades de trabalho ou colaborações.
 
-LinkedIn:https://www.linkedin.com/in/ellyda-santana-62a580223/ E-mail: ellydamicaella810@gmail.com Vamos inovar e construir o futuro da tecnologia juntos!
+LinkedIn: https://www.linkedin.com/in/thiago-andrade-060b54290/ E-mail: andradethiago1609@gmail.com Vamos inovar e construir o futuro da tecnologia juntos!
