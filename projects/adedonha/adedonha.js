@@ -1,6 +1,39 @@
 // usado para inputs do jogador
 let readline = require('readline-sync');
 
+// aqui fica o array de categorias, inicialmente com temas pre selecionados
+let categorias = ["Nome", "Animal", "Fruta", "Cor", "Objeto"];
+
+// variavel para verificar se o usuario deseja alterar os temas
+let customizar = false;
+
+// aqui pegando a respota do jogador
+let resposta = readline.question("Voce deseja customizar os temas? (s/n): ");
+
+// variavel para receber a letra sorteada
+let letra;
+
+// variavel para verificar se o jogador deseja continuar jogando
+let jogarNovamente = false;
+
+//variavel usada para salvar em qual rodada esta o jogo, setamos como 0 por que ela sera usada em arrays
+let rodada = 0;
+
+// variavel usada para salvar a pontuacao de cada rodada do jogo (por isso um array/lista/vetor) caso o jogador queira jogar varias vezes, iniciado em 0 na primeira posicao por que a pontuacao do jogador comeca em 0
+let pontuacao = [0];
+
+// variavel usada para guardar todas as respostas do jogador em cada rodada do jogo (por isso um array/lista/vetor)
+let linhaRodada = [];
+
+// aqui se a primeira letra do usuario for "s", entendesse que o usuario deseja customizar os temas
+if (resposta[0].toLowerCase() === "s") {
+    customizar = true;
+}
+
+// se customizar for true, o array de categorias é resetado
+if (customizar) {
+    categorias = [];
+}
 
 // funcao para sortear a letra
 function sortearletra() {
@@ -14,14 +47,8 @@ function sortearletra() {
     return alfabeto[indice];
 }
 
-//variavel usada para salvar em qual rodada esta o jogo, setamos como 0 por que ela sera usada em arrays
-let rodada = 0;
-
-// variavel usada para salvar a pontuacao de cada rodada do jogo (por isso um array/lista/vetor) caso o jogador queira jogar varias vezes, iniciado em 0 na primeira posicao por que a pontuacao do jogador comeca em 0
-let pontuacao = [0];
-
-// variavel usada para guardar todas as respostas do jogador em cada rodada do jogo (por isso um array/lista/vetor)
-let linhaRodada = [];
+// aqui é sorteado a letra
+letra = sortearletra();
 
 //funcao usada para adicionar a pontuacao caso o jogador acerte a palavra
 function adicionaPontuacao() {
@@ -45,6 +72,7 @@ function desenharTabelaAdedonha(categorias, respostas) {
 
     // variavel number que usamos com uma formula para calcular quantas vezes sera repetido o caracter "-" simplificando o codigo
     const linhaSeparadoraLength = (tamanhoCelula * categorias.length) + categorias.length + pontosDaRodadaString.length;
+
 
     // variavel para receber todos os "-" numa unica string, foi usado a variavel acima linhaSeparadoraLength e essa variavel linhaSeparadora para que o tamanho seja variavel e nao fixo, no caso do jogador decidir customizar os temas por exemplo, o tamanho da linha tambem irá mudar, com essa solucao o tamanho da linha se adequará automaticamente
     let linhaSeparatora = "";
@@ -82,7 +110,8 @@ function desenharTabelaAdedonha(categorias, respostas) {
     let cabecalho = categorias.map(categoria => desenharCelula(categoria)).join('');
 
     // Desenhar cabeçalho com categorias + a coluna de pontos da rodada
-    console.log(cabecalho + pontosDaRodadaString);
+    cabecalho = cabecalho + pontosDaRodadaString;
+    console.log(cabecalho);
 
     // desenhando linha separadora
     desenharLinhaSeparadora();
@@ -184,35 +213,14 @@ function solicitarRespostas(categorias, letra) {
     return respostas;
 }
 
-// aqui fica o array de categorias
-let categorias = ["Nome", "Animal", "Fruta", "Cor", "Objeto"];
-
-// variavel para verificar se o usuario deseja alterar os temas
-let customizar = false;
-
-// aqui pegando a respota do jogador
-let resposta = readline.question("Voce deseja customizar os temas? (s/n): ");
-
-// aqui é sorteado a letra
-let letra = sortearletra();
-
-// variavel para verificar se o jogador deseja continuar jogando
-let jogarNovamente = false;
-
-// aqui se a primeira letra do usuario for "s", entendesse que o usuario deseja customizar os temas
-if (resposta[0].toLowerCase() === "s") {
-    customizar = true;
-}
-
-// se customizar for true, o array de categorias é resetado
-if (customizar) {
-    categorias = [];
-}
 
 // aqui declaramos uma funcao para indicar o iniciamento do jogo
 function startGame() {
     // aqui utilizamos um dowhile para o sistema de jogar novamente
     do {
+        // jogarNovamente setado como falso novamente
+        jogarNovamente = false;
+
         // aqui se customizar for true e for a primeira rodada do jogo, o usuario tera que adicionar os seus proprios temas para jogar
         if (customizar && rodada == 0) {
             do {
