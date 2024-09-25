@@ -64,7 +64,7 @@ function adicionaPontuacao() {
 */
 function desenharTabelaAdedonha(categorias, respostas) {
 
-    const tamanhoCelula = 15; // Tamanho fixo para células da tabela
+    const tamanhoCelula = 20; // Tamanho fixo para células da tabela
 
     // variavel para guardar e reutilizar mais facilmente a string de Pontos da Rodada que fica na tabela
     const pontosDaRodadaString = "| Pontos da rodada |";
