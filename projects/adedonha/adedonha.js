@@ -107,7 +107,7 @@ function desenharTabelaAdedonha(categorias, respostas) {
     // aqui foi declarado a variavel que recebe todo o cabecalho da adedonha onde está os temas, foi utilizado um map em categorias que itera por todo o conteudo de categorias e retorna um novo array
     // map é uma funcao dos arrays para iterar cada conteudo/indice do array podendo altera-los, depende do caso, e no final retorna um novo array, por isso que foi atribuido a variavel cabecalho, que na verdade e uma string por conta do .join('')
     // o join() é uma funcao dos arrays que une todos eles e no meio coloca o que esta no primeiro parametro da funcao que nesse caso é uma string vazia: "", assim todo o conteudo do array junta e se torna uma string só
-    let cabecalho = categorias.map(categoria => desenharCelula(categoria)).join('');
+    let cabecalho = categorias.map(categoria => desenharCelula(categoria)).join("");
 
     // Desenhar cabeçalho com categorias + a coluna de pontos da rodada
     cabecalho = cabecalho + pontosDaRodadaString;
@@ -169,6 +169,8 @@ function desenharTabelaAdedonha(categorias, respostas) {
  * 
  * @param {string[]} categorias (todos os temas da adedonha)
  * @param {string} letra (a letra sorteada)
+ * 
+ * @returns {string[]}
 */
 function solicitarRespostas(categorias, letra) {
     // aqui e declarado um array para receber as respostas do jogador
