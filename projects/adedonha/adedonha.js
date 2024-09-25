@@ -5,19 +5,19 @@ let readline = require('readline-sync');
 // funcao para sortear a letra
 function sortearletra() {
     //array com todas as letras do alfabeto
-    const alfabeto = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'x', 'z'];
+    const alfabeto = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'];
 
     // indice é um numero sorteado de 0 ate 25
     const indice = Math.floor(Math.random() * alfabeto.length);
 
-    // aqui é retornado da funcao a letra sorteada
+    // aqui é retornado a letra sorteada
     return alfabeto[indice];
 }
 
 //variavel usada para salvar em qual rodada esta o jogo, setamos como 0 por que ela sera usada em arrays
 let rodada = 0;
 
-// variavel usada para salvar a pontuacao de cada rodada do jogo (por isso um array/lista/vetor) caso o jogador queira jogar varias vezez, iniciado em 0 na primeira posicao por que a pontuacao do jogador comeca em 0
+// variavel usada para salvar a pontuacao de cada rodada do jogo (por isso um array/lista/vetor) caso o jogador queira jogar varias vezes, iniciado em 0 na primeira posicao por que a pontuacao do jogador comeca em 0
 let pontuacao = [0];
 
 // variavel usada para guardar todas as respostas do jogador em cada rodada do jogo (por isso um array/lista/vetor)
@@ -29,11 +29,11 @@ function adicionaPontuacao() {
 }
 
 
-/** 
+/**
  * funcao para desenhar a tabela da adedonha
  * 
  * @param {string[]} categorias (todos os temas da adedonha)
- * @param {string[]} respostas (todas as respostas do jogador)
+ * @param {string[]} respostas (as respostas do jogador daquela rodada)
 */
 function desenharTabelaAdedonha(categorias, respostas) {
 
@@ -46,7 +46,7 @@ function desenharTabelaAdedonha(categorias, respostas) {
     // variavel number que usamos com uma formula para calcular quantas vezes sera repetido o caracter "-" simplificando o codigo
     const linhaSeparadoraLength = (tamanhoCelula * categorias.length) + categorias.length + pontosDaRodadaString.length;
 
-    // variavel para receber todos os "-" numa unica string, foi usado a variavel acima linhaSeparadoraLength e essa variavel linhaSeparadora para que o tamanho seja variavel e nao fixo, no caso do jogador decidir customizar os temas por exemplo, o tamanho da linha tambem irá mudar, com essa solucao o tamanho da linha se adequara automaticamente
+    // variavel para receber todos os "-" numa unica string, foi usado a variavel acima linhaSeparadoraLength e essa variavel linhaSeparadora para que o tamanho seja variavel e nao fixo, no caso do jogador decidir customizar os temas por exemplo, o tamanho da linha tambem irá mudar, com essa solucao o tamanho da linha se adequará automaticamente
     let linhaSeparatora = "";
 
     // aqui esta acontecendo o loop para a variavel linhaSeparadora receber as quantidades de "-" corretas
@@ -55,7 +55,7 @@ function desenharTabelaAdedonha(categorias, respostas) {
     }
 
     // funcao para desenhar a linha na tela
-    function desenharLinha() {
+    function desenharLinhaSeparadora() {
         console.log(linhaSeparatora);
     }
 
@@ -74,7 +74,7 @@ function desenharTabelaAdedonha(categorias, respostas) {
     }
 
     // desenhando linha separadora
-    desenharLinha();
+    desenharLinhaSeparadora();
 
     // aqui foi declarado a variavel que recebe todo o cabecalho da adedonha onde está os temas, foi utilizado um map em categorias que itera por todo o conteudo de categorias e retorna um novo array
     // map é uma funcao dos arrays para iterar cada conteudo/indice do array podendo altera-los, depende do caso, e no final retorna um novo array, por isso que foi atribuido a variavel cabecalho, que na verdade e uma string por conta do .join('')
@@ -85,7 +85,7 @@ function desenharTabelaAdedonha(categorias, respostas) {
     console.log(cabecalho + pontosDaRodadaString);
 
     // desenhando linha separadora
-    desenharLinha();
+    desenharLinhaSeparadora();
 
     // aqui foi declarado a variavel que recebe a linha da adedonha onde está as respostas do jogador, foi utilizado um map em respostas que itera por todo o conteudo de respostas e retorna um novo array 
     let linhaDaRodada = respostas.map((resposta) => desenharCelula(resposta)).join('');
@@ -103,7 +103,7 @@ function desenharTabelaAdedonha(categorias, respostas) {
         // aqui usamos uma verificacao de que se index for maior que 0, ou seja se no momento da iteracao estiver acima da primeira rodada do jogo, é printado na tela mais uma linha separadora para separar cada linha da rodada
         if (index > 0) {
             // desenhando linha separadora
-            desenharLinha();
+            desenharLinhaSeparadora();
         }
 
         // aqui declaramos uma variavel pontuacaoString para guardar a string mais facilmente
@@ -131,7 +131,7 @@ function desenharTabelaAdedonha(categorias, respostas) {
     })
 
     // desenhando linha separadora
-    desenharLinha();
+    desenharLinhaSeparadora();
 }
 
 
