@@ -177,6 +177,8 @@ function solicitarRespostas(categorias, letra) {
         } while (errou);
         // aqui respostas recebe a nova resposta do jogador
         respostas.push(resposta);
+        // limpa o terminal
+        console.clear();
     });
 
     return respostas;
